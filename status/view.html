@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Bulk Sales</title>
+  <link rel="stylesheet" href="view.css">
+  <style>
+    /* Add relevant styles here */
+    .Daily-container {
+      padding: 20px;
+    }
+    .reflect-text {
+      font-weight: bold;
+    }
+    .table2 {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table2 th, .table2 td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    .table2 th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <div class="Daily-container">
+    <div class="Record-table">
+      <table class="table2">
+        <thead class="R-row">
+          <tr>
+            <th>Id No</th>
+            <th>FirstName</th>
+            <th>Secondname</th>
+            <th>Position</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody class="bodyprop" id="tableBody">
+          <!-- Rows will be dynamically added using JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
