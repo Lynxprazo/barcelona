@@ -1,0 +1,218 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(65, 65, 65);
+
+}
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 450px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .title {
+    font-size: 28px;
+    color: royalblue;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  .title::before,.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: royalblue;
+  }
+  
+  .title::before {
+    width: 18px;
+    height: 18px;
+    background-color: royalblue;
+  }
+  
+  .title::after {
+    width: 18px;
+    height: 18px;
+    animation: pulse 1s linear infinite;
+  }
+  
+  .message, .signin {
+    color: rgba(88, 87, 87, 0.822);
+    font-size: 14px;
+  }
+  
+  .signin {
+    text-align: center;
+  }
+  
+  .signin a {
+    color: royalblue;
+  }
+  
+  .signin a:hover {
+    text-decoration: underline royalblue;
+  }
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: grey;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 15px;
+    font-size: 0.9em;
+  }
+  
+  .form label .input:focus + span,.form label .input:valid + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
+  }
+  
+  .submit {
+    border: none;
+    outline: none;
+    background-color: royalblue;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+  }
+  
+  .submit:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  /* css for the list  */
+  .show-list{
+  }
+  .hide-list{
+    display: flex;
+  }
+  .AddOnlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; 
+    border: 2px solid #ddd; 
+    border-radius: 12px; 
+    padding: 10px 20px; 
+    width:auto; 
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation:Animation-vibrate 2s ease  alternate ;
+  }
+  
+  .AddOnlist ul {
+    display: flex;
+    list-style: none; 
+    margin: 0; 
+    padding: 0;
+    gap: 10px; 
+  }
+  
+  .AddOnlist li {
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 8px 12px; 
+    font-size: 16px; 
+    color: #333; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+  }
+  
+  .AddOnlist li:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    background-color: #f0f0f0; 
+  }
+  
+  @keyframes Animation-vibrate {
+    0%{
+        transform: rotateZ(-3deg);
+    }10%{
+        transform:rotateZ(3deg);
+    }
+    20%{
+        transform: rotateZ(-3deg);
+    }30%{
+        transform:rotateZ(3deg);
+    }
+    40%{
+        transform: rotateZ(-3deg);
+    }50%{
+        transform:rotateZ(3deg);
+    }
+    60%{
+        transform: rotateZ(-3deg);
+    }70%{
+        transform:rotateZ(3deg);
+    }
+    80%{
+        transform: rotateZ(-3deg);
+    }85%{
+        transform:rotateZ(3deg);
+    }
+    90%{
+        transform: rotateZ(-3deg);
+    }100%{
+        transform:rotateZ(0deg);
+    }
+    
+  }

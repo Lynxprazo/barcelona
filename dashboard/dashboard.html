@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="nav-body">
+        <nav class="navigation">
+            <div class="burger">
+                <div class="L1"></div>
+                <div class="L2"></div>
+                <div class="L3"></div>
+            </div>
+            <!-- Add your logo or image here -->
+            <img style="border: 2px solid rgb(248, 50, 255); border-radius: 50%;" src="../image/images (1).png" alt="Logo">
+
+            <ul class="nav-links">
+                <li><a href="/Dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="/Register" class="nav-link">Register</a></li>
+                <li><a href="/Login" class="nav-link">Login</a></li>
+                <li><a href="/Debits" class="nav-link">Debits</a></li>
+                <li><a href="/services" class="nav-link">Services</a></li>
+                <li><a href="/profit" class="nav-link">Performance</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        // JavaScript to handle the burger menu toggle (if needed)
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            burger.classList.toggle('across');
+        });
+    </script>
+    <div class="card-container">
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Leo Messi</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Neymar</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Alba Jordi</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Xaiv</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Suarez luis</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Lewandoski</figcaption>
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Barcelona</figcaption>
+                <img src="../image/fc Barcelona (1).jpg" alt="">
+                <img src="../image/fc Barcelona (1).jpg" alt="">
+            </figure>
+        </div>
+        <div class="cards">
+            <figure class="card">
+                <figcaption class="card_title">Lamine Yamal</figcaption>
+            </figure>
+        </div>
+    </div>
+
+</body>
+</html>
+
+</body>
+</html>

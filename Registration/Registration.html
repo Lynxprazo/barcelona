@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Reg.css" />
+  </head>
+  <script>
+    function lastregistered() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "./Registration.php", true);  
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) { 
+                var data = JSON.parse(xhr.responseText);
+                
+                
+                var listItem = document.createElement("li");
+                listItem.innerHTML = `Id: ${data.id} || Firstname: ${data.FirstName}|| secondname: ${data.secondname} || Position: ${data.position} || Status:${data.status}`;
+                
+                
+                document.getElementById("listIteam").appendChild(listItem);
+            }
+        };
+        xhr.send();  
+    }
+    window.onload = function(){
+      lastregistered()
+    }
+</script>
+  <body>
+    
+    <div class="show-list">
+
+        <div class="AddOnlist">
+            <ul id="listIteam">
+            
+            </ul>
+          </div>
+    </div>
+    <form
+      class="form"
+      action="Registration.php"
+      autocomplete="off"
+      method="POST"
+    >
+      <p class="title">Add New Member</p>
+      <p class="message">form Registration for new member</p>
+      <div class="flex">
+        <label>
+          <input
+            name="Firstname"
+            required=""
+            placeholder=""
+            type="text"
+            class="input"
+          />
+          <span>Firstname</span>
+        </label>
+
+        <label>
+          <input
+            name="secondname"
+            required=""
+            placeholder=""
+            type="text"
+            class="input"
+          />
+          <span>Lastname</span>
+        </label>
+      </div>
+
+      <label>
+        <select name="position" id="option" class="input">
+          <option value="">--Choose position--</option>
+          <option value="Manager">Manager</option>
+          <option value="Player">Player</option>
+        </select>
+      </label>
+      <label>
+        <select name="status" id="option" class="input">
+          <option value="">--status--</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Suspended">Suspended</option>
+        </select>
+      </label>
+      <button class="submit" id="form-submission">Submit</button>
+    </form>
+
+    <script>
+  document.querySelector(".form").addEventListener("submit", function (event) {
+
+  const form = event.target;
+
+  
+  if (!form.checkValidity()) {
+    event.preventDefault();
+    alert("Please fill all input fields and select all options.");
+    form.reportValidity(); 
+    return;
+  }
+
+  alert("Form submitted successfully!");
+});
+
+    </script>
+
+    
+  </body>
+</html>
+
+<!-- php for fetch last data added from the database  -->
+
+
