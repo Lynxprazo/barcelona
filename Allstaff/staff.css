@@ -1,0 +1,89 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background: rgb(2, 2, 70);
+  }
+  .containeee{
+    font-family: 'Arial', sans-serif;
+    /* background: #f9f9f9; */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .team-container {
+    width: 90%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 16px;
+    background: #e95492;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .team-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .team-header,
+  .team-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .team-header {
+    background: #f1f1f1;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .team-item {
+    transition: background 0.3s ease;
+  }
+  
+  .team-item:hover {
+    background: #f9f9f9;
+  }
+  
+  .team-item div:last-child {
+    font-weight: bold;
+    color: #4caf50;
+  }
+  
+  .team-item div:last-child.inactive {
+    color: #f44336;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .team-header,
+    .team-item {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  
+    .team-header div:nth-child(4),
+    .team-header div:nth-child(5),
+    .team-item div:nth-child(4),
+    .team-item div:nth-child(5) {
+      display: none;
+    }
+  }
+  
