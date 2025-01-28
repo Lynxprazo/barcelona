@@ -72,6 +72,7 @@
               const status = row.children[4].textContent;
 
               // Populate the form
+              document.getElementById('id').value = id;
               document.getElementById('FirstName').value = firstName;
               document.getElementById('secondname').value = secondName;
               document.getElementById('position').value = position;
@@ -99,10 +100,16 @@
     <div class="EditForm">
       <div class="container">
         <div class="heading">Edit Details</div>
-        <form action="" class="form">
+        <form action="view.php" class="form" method="post"  >
+          <input required="" class="input" type="text" name="id" id="id" placeholder="Identification" />
           <input required="" class="input" type="text" name="FirstName" id="FirstName" placeholder="First Name" />
           <input required="" class="input" type="text" name="secondname" id="secondname" placeholder="Second Name" />
-          <input required="" class="input" type="text" name="position" id="position" placeholder="Position" />
+          <select name="position" id="position" class="input">
+            <option value="">--Position--</option>
+            <option value="Player">Player</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Manager">Manager</option>
+          </select>
           <select name="status" id="status" class="input">
             <option value="">--Status--</option>
             <option value="Active">Active</option>
