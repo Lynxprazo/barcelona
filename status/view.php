@@ -1,8 +1,16 @@
 <?php
+session_start(); // Start the session
 include "../databaseconnection.php";
 
+// Check if the user is logged in as a manager
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'manager') {
+    // If the user is not a manager, redirect them to the login page
+    echo "<script> alert('You are not authorized to access this page.'); window.location.href = '../login/login.html'; </script>";
+    exit;
+}
 
 try {
+ 
     $sql = $conn->query("SELECT * FROM team_membar");
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -15,21 +23,23 @@ try {
     die("Something went wrong: " . $e->getMessage());
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-              if (isset($_POST['id']) && !empty($_POST['id'])) {
+        // Update or insert member details
+        if (isset($_POST['id']) && !empty($_POST['id'])) {
             $id = $_POST["id"];
             $FirstName = $_POST['FirstName'] ?? '';
             $secondname = $_POST['secondname'] ?? '';
             $position = $_POST['position'] ?? '';
             $status = $_POST['status'] ?? '';
 
+            // Check if the member exists
             $sql = $conn->prepare("SELECT * FROM team_membar WHERE id = :id");
             $sql->bindParam(":id", $id, PDO::PARAM_INT);
             $sql->execute();
 
-            if ($sql->rowCount() > 0){
+            if ($sql->rowCount() > 0) {
+                // Update existing member
                 $sql2 = "UPDATE team_membar 
                          SET FirstName = :FirstName, 
                              secondname = :secondname, 

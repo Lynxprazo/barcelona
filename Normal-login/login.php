@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../databaseconnection.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -14,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Check if FirstName and secondname match
                 if ($result2['FirstName'] === $FirstName && $result2['secondname'] === $secondname) {
+                    $_SESSION['user_id'] = $id;
+                    $_SESSION['user_type'] = "Normal_Membar";
                     header("Location:../dashboard/dashboard.html");
                     exit;
                 } else {
