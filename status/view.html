@@ -1,49 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daily Bulk Sales</title>
-  <link rel="stylesheet" href="view.css">
-  <style>
-    /* Add relevant styles here */
-    .Daily-container {
-      padding: 20px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Bulk Sales</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="view.css" />
+    <link rel="stylesheet" href="formedit.css">
+    <style>
+      .Daily-container {
+        padding: 20px;
+      }
+      .reflect-text {
+        font-weight: bold;
+      }
+      .table2 {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table2 th,
+      .table2 td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .table2 th {
+        background-color: #f4f4f4;
+      }
+      .EditForm {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <script>
+    function listAllmember() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "./view.php", true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+
+          var tablebody = document.getElementById("tableBody");
+
+          tablebody.innerHTML = "";
+          data.forEach((member) => {
+            var row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${member.id}</td>
+            <td>${member.FirstName}</td>
+            <td>${member.secondname}</td>
+            <td>${member.position}</td>
+            <td>${member.status}</td>
+            <td><i class="fa fa-pencil-alt edit-btn" style="cursor: pointer;"></i></td>
+            <td><i class="fa fa-trash"></i></td>
+            `;
+
+            tablebody.appendChild(row);
+          });
+
+          // Add click event listener to each pencil icon
+          document.querySelectorAll('.edit-btn').forEach((button) => {
+            button.addEventListener('click', function () {
+              const row = this.closest('tr');
+              const id = row.children[0].textContent;
+              const firstName = row.children[1].textContent;
+              const secondName = row.children[2].textContent;
+              const position = row.children[3].textContent;
+              const status = row.children[4].textContent;
+
+              // Populate the form
+              document.getElementById('FirstName').value = firstName;
+              document.getElementById('secondname').value = secondName;
+              document.getElementById('position').value = position;
+              document.getElementById('status').value = status;
+
+              // Show the form
+              document.querySelector('.EditForm').style.display = 'block';
+            });
+          });
+        }
+      };
+      xhr.send();
     }
-    .reflect-text {
-      font-weight: bold;
-    }
-    .table2 {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .table2 th, .table2 td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    .table2 th {
-      background-color: #f4f4f4;
-    }
-  </style>
-</head>
-<body>
-  <div class="Daily-container">
-    <div class="Record-table">
-      <table class="table2">
-        <thead class="R-row">
-          <tr>
-            <th>Id No</th>
-            <th>FirstName</th>
-            <th>Secondname</th>
-            <th>Position</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody class="bodyprop" id="tableBody">
-          <!-- Rows will be dynamically added using JavaScript -->
-        </tbody>
-      </table>
+
+    window.onload = function () {
+      listAllmember();
+    };
+  </script>
+  <body>
+    <button class="animated-button">
+      <span>Open Form</span>
+      <span></span>
+    </button>
+
+    <div class="EditForm">
+      <div class="container">
+        <div class="heading">Edit Details</div>
+        <form action="" class="form">
+          <input required="" class="input" type="text" name="FirstName" id="FirstName" placeholder="First Name" />
+          <input required="" class="input" type="text" name="secondname" id="secondname" placeholder="Second Name" />
+          <input required="" class="input" type="text" name="position" id="position" placeholder="Position" />
+          <select name="status" id="status" class="input">
+            <option value="">--Status--</option>
+            <option value="Active">Active</option>
+            <option value="Suspended">Suspended</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+          <button type="submit" class="login-button">Confirm</button>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
+
+    <div class="Daily-container">
+      <div class="Record-table">
+        <table class="table2">
+          <thead class="R-row">
+            <tr>
+              <th>Id</th>
+              <th>First Name</th>
+              <th>Second Name</th>
+              <th>Position</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody class="bodyprop" id="tableBody">
+            <!-- Rows will be dynamically added using JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
