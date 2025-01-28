@@ -61,7 +61,7 @@
             tablebody.appendChild(row);
           });
 
-          // Add click event listener to each pencil icon
+       
           document.querySelectorAll('.edit-btn').forEach((button) => {
             button.addEventListener('click', function () {
               const row = this.closest('tr');
@@ -71,7 +71,7 @@
               const position = row.children[3].textContent;
               const status = row.children[4].textContent;
 
-              // Populate the form
+       
               document.getElementById('id').value = id;
               document.getElementById('FirstName').value = firstName;
               document.getElementById('secondname').value = secondName;
@@ -136,7 +136,6 @@
             </tr>
           </thead>
           <tbody class="bodyprop" id="tableBody">
-            <!-- Rows will be dynamically added using JavaScript -->
           </tbody>
         </table>
       </div>

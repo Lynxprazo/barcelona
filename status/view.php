@@ -1,8 +1,8 @@
-<?php 
+<?php
 include "../databaseconnection.php";
 
 try {
-    
+
     $sql = $conn->query("SELECT * FROM team_membar");
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
@@ -16,27 +16,25 @@ try {
     die("Something went wrong: " . $e->getMessage());
 }
 
-
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     
         $id = $_POST["id"] ?? "";
+        $FirstName = $_POST['FirstName'] ?? '';
+        $secondname = $_POST['secondname'] ?? '';
+        $position = $_POST['position'] ?? '';
+        $status = $_POST['status'] ?? '';
+
         if (empty($id)) {
             echo "<script>alert('ID is required');</script>";
             exit;
         }
 
-       
+    
         $sql = $conn->prepare("SELECT * FROM team_membar WHERE id = :id");
         $sql->bindParam(":id", $id, PDO::PARAM_INT);
+        $sql->execute();
 
-        if ($sql->execute() && $sql->rowCount() > 0) {
-           
-            $FirstName = $_POST['FirstName'] ?? '';
-            $secondname = $_POST['secondname'] ?? '';
-            $position = $_POST['position'] ?? '';
-            $status = $_POST['status'] ?? '';
-
+        if ($sql->rowCount() > 0) {
             $sql2 = "UPDATE team_membar 
                      SET FirstName = :FirstName, 
                          secondname = :secondname, 
@@ -57,7 +55,19 @@ try {
                 echo "<script>alert('Failed to update the information');</script>";
             }
         } else {
-            echo "<script>alert('Member not found');</script>";
+            $sql3 = $conn->prepare("INSERT INTO team_membar (FirstName, secondname, position, status) 
+                                    VALUES (:FirstName, :secondname, :position, :status)");
+            $sql3->bindParam(":FirstName", $FirstName, PDO::PARAM_STR);
+            $sql3->bindParam(":secondname", $secondname, PDO::PARAM_STR);
+            $sql3->bindParam(":position", $position, PDO::PARAM_STR);
+            $sql3->bindParam(":status", $status, PDO::PARAM_STR);
+
+            if ($sql3->execute()) {
+                header("Location: ./view.html");
+                exit; 
+            } else {
+                echo "<script>alert('Failed to add a new member');</script>";
+            }
         }
     }
 } catch (PDOException $e) {
