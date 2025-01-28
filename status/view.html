@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="view.css" />
     <link rel="stylesheet" href="formedit.css">
+    <link rel="stylesheet" href="../dashboard/navigation.css">
     <style>
       .Daily-container {
         padding: 20px;
@@ -117,6 +118,30 @@
     };
   </script>
   <body>
+    <div class="nav-body">
+      <nav class="navigation">
+          <div class="burger">
+              <div class="L1"></div>
+              <div class="L2"></div>
+              <div class="L3"></div>
+          </div>
+          <img style="border: 2px solid rgb(248, 50, 255); border-radius: 50%;" src="../image/images (1).png" alt="Logo">
+
+          <ul class="nav-links">
+              <li><a href="../dashboard/dashboard.html" class="nav-link">Dashboard</a></li>
+              <!-- <li><a href="/Register" class="nav-link">Register</a></li> -->
+              <li><a href="../Login/login.html" class="nav-link">Login Out</a></li>
+              <!-- <li><a href="/Debits" class="nav-link">Debits</a></li> -->
+              <li><a href="./view.html" class="nav-link">View Team Membar</a></li>
+              <li><a href="../Registration/Registration.html" class="nav-link">Registration</a></li>
+          </ul>
+      </nav>
+  </div>
+    <div class="heading">
+      <span>
+        <h1>Edit Team</h1>
+      </span>
+    </div>
     <button class="animated-button" onclick="document.querySelector('.EditForm').style.display = 'block';">
       <span>Open Form</span>
       <span></span>

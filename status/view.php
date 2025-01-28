@@ -1,7 +1,7 @@
 <?php
 include "../databaseconnection.php";
 
-// Fetch all records
+
 try {
     $sql = $conn->query("SELECT * FROM team_membar");
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -15,24 +15,21 @@ try {
     die("Something went wrong: " . $e->getMessage());
 }
 
-// Handle POST requests for updating or inserting data
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Update or insert member details
-        if (isset($_POST['id']) && !empty($_POST['id'])) {
+              if (isset($_POST['id']) && !empty($_POST['id'])) {
             $id = $_POST["id"];
             $FirstName = $_POST['FirstName'] ?? '';
             $secondname = $_POST['secondname'] ?? '';
             $position = $_POST['position'] ?? '';
             $status = $_POST['status'] ?? '';
 
-            // Check if the ID exists in the database
             $sql = $conn->prepare("SELECT * FROM team_membar WHERE id = :id");
             $sql->bindParam(":id", $id, PDO::PARAM_INT);
             $sql->execute();
 
-            if ($sql->rowCount() > 0) {
-                // Update existing member
+            if ($sql->rowCount() > 0){
                 $sql2 = "UPDATE team_membar 
                          SET FirstName = :FirstName, 
                              secondname = :secondname, 

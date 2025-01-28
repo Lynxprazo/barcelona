@@ -1,6 +1,6 @@
 <?php
 require "../databaseconnection.php";
-// line of code to insert data to the database 
+// line how to sign in as menager
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['Email'] ?? '';
@@ -31,4 +31,6 @@ try {
     echo "Something went wrong: " . $e->getMessage();
 }
 
+// line  how to sign as normal user
 
+?>
